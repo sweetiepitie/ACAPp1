@@ -1,6 +1,7 @@
 # ACAPp1
 
 Compilation:
+
 	ej1.c > mpicc ej1.c -o ej1
 	
 	pi.c  > gcc pi.c -o pi
@@ -8,6 +9,7 @@ Compilation:
 	ej3.c > mpicc ej3.c -o ej3
 
 Execution:
+
 	ej1 > mpiexec --oversubscribe -n grade_of_parallelism ej1
 	
 	pi  > ./pi number_of_intervals
