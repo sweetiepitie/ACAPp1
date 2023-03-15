@@ -72,6 +72,8 @@ int main(int argc, char **argv)
         // Master
         double global_pi;
         double wall0, wall1;
+
+        MPI_Barrier(MPI_COMM_WORLD);
         wall0 = get_wall_time();
 
         get_my_interval(size, intervals, rank, &l_limit, &u_limit);
@@ -80,7 +82,7 @@ int main(int argc, char **argv)
         
         wall1 = get_wall_time();
 
-        printf("\n\nPI calculated by rectangles : %f\n", global_pi);
+        printf("\nPI calculated by rectangles : %f\n", global_pi);
         printf("Wall time consumed : %f\n\n", wall1 - wall0);
 
         MPI_Barrier(MPI_COMM_WORLD);
@@ -91,11 +93,13 @@ int main(int argc, char **argv)
         global_pi /= size;
         wall1 = get_wall_time();
 
-        printf("\n\nPI calculated by leibnizs : %f\n", global_pi);
+        printf("\nPI calculated by leibnizs : %f\n", global_pi);
         printf("Wall time consumed : %f\n\n", wall1 - wall0);
 
     }else{
         // Their bithces
+
+        MPI_Barrier(MPI_COMM_WORLD);
         get_my_interval(size, intervals, rank, &l_limit, &u_limit);
         part_pi = piRectangles(intervals, l_limit, u_limit);
         MPI_Reduce(&part_pi, NULL, 1, MPI_DOUBLE, MPI_SUM, MASTER, MPI_COMM_WORLD);

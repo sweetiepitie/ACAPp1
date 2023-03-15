@@ -12,13 +12,11 @@ double get_wall_time(){
 		return 0;
 	}
 
-	return (double)t.tv_sec - (double)t.tv_usec * .000001;
+	return (double)t.tv_sec + (double)t.tv_usec * .000001;
 }
 
-double piLeibniz(int steps){
-	double wall0, wall1;
-	wall0 = get_wall_time();
-
+double piLeibniz(int steps)
+{
 	double partpi = 0.0;
 	double num = 1.0;
 	double denom = 1.0;
@@ -28,23 +26,18 @@ double piLeibniz(int steps){
 		denom += 2.0;
 	}
 
-	wall1 = get_wall_time();
-	printf("\nReal time elapsed for computing PI with leibnith is %.7f sec\n", wall0 - wall1);
 	return 4.0*partpi;
 }
 
-double piRectangles(int intervals){
-	double wall0, wall1;
-	wall0 = get_wall_time();
-
+double piRectangles(int intervals)
+{
 	double width = 1.0/intervals;
 	double sum = 0.0, x;
 	for(int i = 0; i<intervals; i++){
 		x = (i + 0.5)*width;
 		sum += 4.0/(1.0 + x*x);
 	}
-	wall1 = get_wall_time();
-	printf("\nReal time elapsed for computing PI with leibnith is %.7f sec\n", wall0 - wall1);
+	
 	return sum*width;
 }
 
@@ -54,12 +47,22 @@ int main(int argc, char* argv[]){
 	}else{
 		int steps = atoi(argv[1]);
 		if(steps<=0){
-			printf("El nÃºmero de iteraciones debe ser un entero positivo!\n");
+			//printf("El nÃºmero de iteraciones debe ser un entero positivo!\n");
 		}else{
-			double pi = piLeibniz(steps);
-			printf("PI por la serie de G. Leibniz [%d iteraciones] =\t%lf\n", steps, pi);
-			pi = piRectangles(steps);
-			printf("PI por integraciÃ³n del cÃ­rculo [%d intervalos] = \t%lf\n", steps, pi);
+			double wall0, wall1;
+			wall0 = get_wall_time();
+			double piLei = piLeibniz(steps);
+			wall1 = get_wall_time();
+			printf("\n\nPI por la serie de G. Leibniz [%d iteraciones] =\t%lf\n", steps, piLei);
+			double wallLeibniz = wall1 - wall0;
+			printf("Real time elapsed for computing PI with leibnith is %.7f sec\n\n", wall1 - wall0);
+			
+			wall0 = get_wall_time();
+			double piRec = piRectangles(steps);
+			wall1 = get_wall_time();
+			printf("PI por integraciÃ³n del cÃ­rculo [%d intervalos] = \t%lf\n", steps, piRec);
+			double wallRectangles = wall1 - wall0;
+			printf("Real time elapsed for computing PI with rectangles is %.7f sec\n", wall1 - wall0);
 		}
 	}
 	return 0;

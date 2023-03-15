@@ -1,0 +1,32 @@
+Execution pi effort : 10000
+Media: 0.0000618
+
+Execution pi effort : 50000
+Media: 0.000298
+ 
+Execution pi effort : 1000000
+Media: 0.0059406
+
+Execution pi effort : 5000000
+Media: 0.0174812
+
+Execution pi effort : 10000000
+Media: 0.036504
+
+Execution pi effort : 20000000
+Media: 0.0628804
+
+Execution pi effort : 100000000
+Media: 0.279807
+
+Execution pi effort : 500000000
+Media: 1.4307802
+
+Execution pi effort : 1000000000
+Media: 2.8263022
+
+Execution pi effort : 2147483647
+Media: 6.2156116
+
+
+
