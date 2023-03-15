@@ -53,7 +53,7 @@ int main(int argc, char* argv[]){
 			wall0 = get_wall_time();
 			double piLei = piLeibniz(steps);
 			wall1 = get_wall_time();
-			printf("\n\nPI por la serie de G. Leibniz [%d iteraciones] =\t%lf\n", steps, piLei);
+			printf("\nPI por la serie de G. Leibniz [%d iteraciones] =\t%lf\n", steps, piLei);
 			double wallLeibniz = wall1 - wall0;
 			printf("Real time elapsed for computing PI with leibnith is %.7f sec\n\n", wall1 - wall0);
 			
@@ -62,7 +62,7 @@ int main(int argc, char* argv[]){
 			wall1 = get_wall_time();
 			printf("PI por integraciÃ³n del cÃ­rculo [%d intervalos] = \t%lf\n", steps, piRec);
 			double wallRectangles = wall1 - wall0;
-			printf("Real time elapsed for computing PI with rectangles is %.7f sec\n", wall1 - wall0);
+			printf("Real time elapsed for computing PI with rectangles is %.7f sec\n\n", wall1 - wall0);
 		}
 	}
 	return 0;
