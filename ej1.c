@@ -30,11 +30,19 @@ int main(int argc, char **argv)
         char *outbuff;
         MPI_Status status;
 
-        for (int i = 0; i < arr_size; i++)
+
+        printf ("\n\nArray 1 : \n");
+        for (int i = 0; i < arr_size; i++){
             v1[i] = i;
+            printf("%d ", v1[i]);
+        }
         
-        for (int i = 0; i < arr_size; i++)
-            v2[i] = i;
+        printf ("\n\nArray 2 : \n");
+        for (int i = 0; i < arr_size; i++){
+            v2[i] = arr_size - i;
+            printf("%d ", v2[i]);
+        }
+
 
         int local_items, capacity;
         for (int i = 1; i < num_proc; i++){
