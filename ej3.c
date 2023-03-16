@@ -82,7 +82,7 @@ int main(int argc, char **argv)
         
         wall1 = get_wall_time();
 
-        printf("\nPI calculated by rectangles : %f\n", global_pi);
+        printf("\n\nPI calculated by rectangles : %f\n", global_pi);
         printf("Wall time consumed : %f\n\n", wall1 - wall0);
 
         MPI_Barrier(MPI_COMM_WORLD);
@@ -93,7 +93,7 @@ int main(int argc, char **argv)
         global_pi /= size;
         wall1 = get_wall_time();
 
-        printf("\nPI calculated by leibnizs : %f\n", global_pi);
+        printf("\nPI calculated by Leibniz : %f\n", global_pi);
         printf("Wall time consumed : %f\n\n", wall1 - wall0);
 
     }else{
